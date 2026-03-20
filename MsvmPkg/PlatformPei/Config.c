@@ -901,6 +901,7 @@ ConfigSetUefiConfigFlags(
     PEI_FAIL_FAST_IF_FAILED(PcdSetBoolS(PcdMtrrsInitializedAtLoad, (UINT8) ConfigFlags->Flags.MtrrsInitializedAtLoad));
     PEI_FAIL_FAST_IF_FAILED(PcdSetBoolS(PcdHvSintEnabled, (UINT8) ConfigFlags->Flags.HvSintEnabled));
     PEI_FAIL_FAST_IF_FAILED(PcdSetBoolS(PcdAziHsmEnabled, (UINT8) ConfigFlags->Flags.AziHsmEnabled));
+    PEI_FAIL_FAST_IF_FAILED(PcdSetBoolS(PcdIpmiConfigured, (UINT8) ConfigFlags->Flags.IpmiConfigured));
 
     //
     // If memory protections are enabled, configure the value into the HOB.

@@ -1932,6 +1932,75 @@ Return Value:
     }
 }
 
+VOID
+AddIpmiDeviceInformation(
+    IN  EFI_SMBIOS_PROTOCOL* Smbios
+    )
+/*++
+
+Routine Description:
+
+    Adds the IPMI Device Information structure (type 38) to the SMBIOS table
+    if the IPMI KCS device is configured.
+
+Arguments:
+
+    Smbios - The DXE Smbios protocol.
+
+Return Value:
+
+    n/a
+
+--*/
+{
+    if (!PcdGetBool(PcdIpmiConfigured))
+    {
+        return;
+    }
+
+    //
+    // SMBIOS Type 38 - IPMI Device Information.
+    // Describes the IPMI KCS interface at I/O ports 0xCA2-0xCA3.
+    //
+    #pragma pack(1)
+    typedef struct
+    {
+        SMBIOS_STRUCTURE Header;
+        UINT8  InterfaceType;
+        UINT8  IpmiSpecificationRevision;
+        UINT8  I2CSlaveAddress;
+        UINT8  NvStorageDeviceAddress;
+        UINT64 BaseAddress;
+        UINT8  BaseAddressModifier;
+        UINT8  InterruptNumber;
+        CHAR8  Terminator[2];
+    } SMBIOS_TYPE38_IPMI;
+    #pragma pack()
+
+    static SMBIOS_TYPE38_IPMI ipmiDeviceInformation =
+    {
+        {
+            38,                                 // Type
+            sizeof(SMBIOS_TYPE38_IPMI) - 2,     // Length (excludes terminator)
+            SMBIOS_HANDLE_PI_RESERVED           // Handle
+        },
+        0x01,                                   // InterfaceType: KCS
+        0x20,                                   // IPMI Spec Revision: 2.0
+        0x20,                                   // I2C Slave Address (BMC default)
+        0xFF,                                   // NV Storage Device: not present
+        0x0000000000000CA3,                     // BaseAddress: bit 0=1 means I/O space, addr = 0xCA2
+        0x01,                                   // BaseAddressModifier: 1-byte boundary, I/O space
+        0x00,                                   // InterruptNumber: polled (no interrupt)
+        {
+            0,                                  // Terminator bytes
+            0
+        }
+    };
+
+    (VOID)AddStructure(Smbios, &ipmiDeviceInformation, NULL, NULL);
+}
+
+
 
 VOID
 AddAllStructures(
