@@ -223,6 +223,8 @@ INF MsvmPkg/MsvmPcAtRealTimeClockRuntimeDxe/PcatRealTimeClockRuntimeDxe.inf
 INF MsvmPkg/NetvscDxe/NetvscDxe.inf
 INF MsvmPkg/NvmExpressDxe/NvmExpressDxe.inf
 INF MsvmPkg/EfiDiagnosticsDxe/EfiDiagnosticsDxe.inf
+INF MsvmPkg/Virtio10Dxe/Virtio10.inf
+INF MsvmPkg/VirtioBlkDxe/VirtioBlk.inf
 INF MsvmPkg/PlatformDeviceStateHelper/PlatformDeviceStateHelper.inf
 INF MsvmPkg/SerialDxe/SerialDxe.inf
 INF MsvmPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.inf

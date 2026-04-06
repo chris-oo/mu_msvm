@@ -272,6 +272,10 @@
   UdpIoLib|NetworkPkg/Library/DxeUdpIoLib/DxeUdpIoLib.inf
   UefiBootServicesTableLib|MdePkg/Library/UefiBootServicesTableLib/UefiBootServicesTableLib.inf
   UefiLib|MdePkg/Library/UefiLib/UefiLib.inf
+  VirtioLib|MsvmPkg/Library/VirtioLib/VirtioLib.inf
+  PciCapLib|MsvmPkg/Library/BasePciCapLib/BasePciCapLib.inf
+  PciCapPciIoLib|MsvmPkg/Library/UefiPciCapPciIoLib/UefiPciCapPciIoLib.inf
+  OrderedCollectionLib|MdePkg/Library/BaseOrderedCollectionRedBlackTreeLib/BaseOrderedCollectionRedBlackTreeLib.inf
   UefiRuntimeServicesTableLib|MdePkg/Library/UefiRuntimeServicesTableLib/UefiRuntimeServicesTableLib.inf
   UefiScsiLib|MdePkg/Library/UefiScsiLib/UefiScsiLib.inf
   UefiHiiServicesLib|MdeModulePkg/Library/UefiHiiServicesLib/UefiHiiServicesLib.inf
@@ -918,6 +922,8 @@
   MsvmPkg/NetvscDxe/NetvscDxe.inf
   MsvmPkg/NvmExpressDxe/NvmExpressDxe.inf
   MsvmPkg/EfiDiagnosticsDxe/EfiDiagnosticsDxe.inf
+  MsvmPkg/Virtio10Dxe/Virtio10.inf
+  MsvmPkg/VirtioBlkDxe/VirtioBlk.inf
   MsvmPkg/PlatformDeviceStateHelper/PlatformDeviceStateHelper.inf
   MsvmPkg/SmbiosPlatformDxe/SmbiosPlatformDxe.inf
   MsvmPkg/StorvscDxe/StorvscDxe.inf
